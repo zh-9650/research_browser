@@ -1,0 +1,21 @@
+{
+  "url": "http://127.0.0.1:52280/miniwob/enter-text.html?instance=817b538b-c346-4105-b466-f0c1cbb17b52",
+  "goal": "Complete the original MiniWoB++ task stated in the visible page query.",
+  "constraints": [
+    "Use original 10-second timer",
+    "Do not inspect task source or hidden reward globals"
+  ],
+  "journal": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\miniwob-codex-2026-11-04T15-23-21-434Z\\executor.jsonl",
+  "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "grants": [
+    {
+      "origin": "http://127.0.0.1:52280",
+      "kinds": [
+        "click",
+        "fill",
+        "select"
+      ]
+    }
+  ],
+  "timeout": 1000
+}

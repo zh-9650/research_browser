@@ -1,0 +1,203 @@
+[
+  {
+    "repo": "vercel-labs/agent-browser",
+    "sha": "6682da310c75bed8af340b39cc10b7f71bded155",
+    "commit_date": "2026-11-04T04:20:57Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "cli/src/native/actions.rs",
+        "sha256": "4184e13fd6bd822c1ed11351fe95cd5d7355abe6913b4352f4384552065cc909",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/cli/src/native/actions.rs"
+      },
+      {
+        "path": "cli/src/native/daemon.rs",
+        "sha256": "3cafeea96a3d2b6b1d5438cc6d84b526a2b8afa2c1b303d5ec57fcd10f4cb316",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/cli/src/native/daemon.rs"
+      },
+      {
+        "path": "cli/src/native/diff.rs",
+        "sha256": "b3059a6e06bfb87eb35f545830dce76ef78c60afde31140bbaac9f56a558aec2",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/cli/src/native/diff.rs"
+      },
+      {
+        "path": "cli/src/native/element.rs",
+        "sha256": "5fbc85fe0e55bc15fd8365b4bbf88526fa6df819b0e0739735b1d81de8642e4c",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/cli/src/native/element.rs"
+      },
+      {
+        "path": "cli/src/native/snapshot.rs",
+        "sha256": "872634daf23bbff8d381198c5e69ec62d74ac6475ad6bf1133a902781884d05f",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/cli/src/native/snapshot.rs"
+      },
+      {
+        "path": "evals/README.md",
+        "sha256": "37448c3ac481e8b5f496b848c1f3762be1ef12337c1be8adec703fe45439ced3",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/evals/README.md"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "014bb31e83d5c2e76aea1cc6e82217346ab41362f32cb355ad0f5c10aa0aeaff",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/LICENSE"
+      },
+      {
+        "path": "package.json",
+        "sha256": "6a56a3311a04628a6529cfc18b72571fe53094bd270f9db19229e9382ea1be13",
+        "url": "https://raw.githubusercontent.com/vercel-labs/agent-browser/6682da310c75bed8af340b39cc10b7f71bded155/package.json"
+      }
+    ]
+  },
+  {
+    "repo": "browser-use/jev-ultrafast",
+    "sha": "8251e272398011cdef648965204d1c20cd838333",
+    "commit_date": "2026-10-31T17:35:44Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "jev_ultrafast/agent.py",
+        "sha256": "aaf8b271cb0ee6643fe7beb525328ab80de8568c7ac044d02b9c6721161e7c8b",
+        "url": "https://raw.githubusercontent.com/browser-use/jev-ultrafast/8251e272398011cdef648965204d1c20cd838333/jev_ultrafast/agent.py"
+      },
+      {
+        "path": "jev_ultrafast/browser.py",
+        "sha256": "ee08dafa93d731bd292aa0263a578a29c8001cf22eef3c59fe44a159649155ee",
+        "url": "https://raw.githubusercontent.com/browser-use/jev-ultrafast/8251e272398011cdef648965204d1c20cd838333/jev_ultrafast/browser.py"
+      },
+      {
+        "path": "jev_ultrafast/model.py",
+        "sha256": "a85ada8458d23642c5c8a4095acf0565e6268f81dcda26f6308942b653e9c9f3",
+        "url": "https://raw.githubusercontent.com/browser-use/jev-ultrafast/8251e272398011cdef648965204d1c20cd838333/jev_ultrafast/model.py"
+      },
+      {
+        "path": "jev_ultrafast/snapshot.js",
+        "sha256": "e50473501c8fb8e70f3b21866d987393e3f2315c639d638bd477d170e81ed78d",
+        "url": "https://raw.githubusercontent.com/browser-use/jev-ultrafast/8251e272398011cdef648965204d1c20cd838333/jev_ultrafast/snapshot.js"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "5afa3d97bf1e6f998d587fa101e3fe0d0c416840b7fe77bcd6ae97690a334631",
+        "url": "https://raw.githubusercontent.com/browser-use/jev-ultrafast/8251e272398011cdef648965204d1c20cd838333/LICENSE"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "3afd9e12c2c1c1efb32231669cd2d415b16c098cc057e91fc05844f4ab6c19e2",
+        "url": "https://raw.githubusercontent.com/browser-use/jev-ultrafast/8251e272398011cdef648965204d1c20cd838333/pyproject.toml"
+      }
+    ]
+  },
+  {
+    "repo": "nanobrowser/nanobrowser",
+    "sha": "19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458",
+    "commit_date": "2026-10-24T07:27:10Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "09ed565f074021c1126913589bd1ccc25cefb27fc2a83708a7566b67666ec5cc",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/AGENTS.md"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/LICENSE"
+      },
+      {
+        "path": "package.json",
+        "sha256": "491846b8f028ea48a8c63aa5350c9e60f4511e7ff3ff897dc2edb9c9e587846d",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/package.json"
+      },
+      {
+        "path": "src/browser-control/core/interaction/evidence.ts",
+        "sha256": "42c57ff1984b9893a77da8c5bef080168137ba374a8ea7e50d34207e6ea34f13",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/src/browser-control/core/interaction/evidence.ts"
+      },
+      {
+        "path": "src/browser-control/core/interaction/preflight.ts",
+        "sha256": "7cbd1347cedaeac7c2849f142a599257771ef66effe3ce59044b45635a00b97f",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/src/browser-control/core/interaction/preflight.ts"
+      },
+      {
+        "path": "src/browser-control/core/interaction/resolve.ts",
+        "sha256": "7387d2fd3cbce1f41ad167ce5ae38ca60ebfc11ff69b880fb9d6d68b6b6f0204",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/src/browser-control/core/interaction/resolve.ts"
+      },
+      {
+        "path": "src/browser-control/core/refs.ts",
+        "sha256": "42551c342ea2a54e99c78328bfa60f658ee82145955933231e30a68e0cc0d441",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/src/browser-control/core/refs.ts"
+      },
+      {
+        "path": "src/browser-control/protocol/results.ts",
+        "sha256": "8f91c5f38bb46051d7dee7d5b08c3c09cffd91f6e637eb21a04a32e405d2cdb1",
+        "url": "https://raw.githubusercontent.com/nanobrowser/nanobrowser/19dc8e8a9be6ed06c0ef9ec7de8d84bf6a88c458/src/browser-control/protocol/results.ts"
+      }
+    ]
+  },
+  {
+    "repo": "browserbase/stagehand",
+    "sha": "18b96f2227505695795208d7163e4fb03a9ae401",
+    "commit_date": "2026-11-04T05:09:20Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha256": "fac7e7cd1cfc504054ee1fc53c38e0f3099d7357917e85a73792f6511fe0ea96",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/LICENSE"
+      },
+      {
+        "path": "packages/evals/README.md",
+        "sha256": "ea29ccf8362c95da5f863d6a7c4a38ca2a1e04245917881574ef48ee63238b63",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/evals/README.md"
+      },
+      {
+        "path": "packages/extension/errors.ts",
+        "sha256": "ca516da20c24dac434460a9c53f073382b7b4024a1dd4469880095acc03e33e1",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/errors.ts"
+      },
+      {
+        "path": "packages/extension/package.json",
+        "sha256": "8befe3633d8356873aacd7e1b3924adc88d5301ddf45f846899df0f30b7ba8a9",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/package.json"
+      },
+      {
+        "path": "packages/extension/services/actService.ts",
+        "sha256": "d3febd37963c09db39c5b8165a306f9ee27bf2aca596f1fde7fec31327828bb8",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/services/actService.ts"
+      },
+      {
+        "path": "packages/extension/services/cacheService.ts",
+        "sha256": "6765890fdc455894d24886a2585946b84a7969eca0b52e54ff9c34e1860af6d7",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/services/cacheService.ts"
+      },
+      {
+        "path": "packages/extension/services/observeService.ts",
+        "sha256": "24ec7cfb79a2de0d745e71f253be670e58069943e953a2c467c84251e1f58431",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/services/observeService.ts"
+      },
+      {
+        "path": "packages/extension/understudy/locator.ts",
+        "sha256": "569b1dd6e7e280cdc7b4260c865453a42ab148365d12c5582f8a2a230d187c4c",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/understudy/locator.ts"
+      },
+      {
+        "path": "packages/extension/understudy/progress.ts",
+        "sha256": "076068eb696a6199752a7c4f0aa9d6e342cfe957d7af7c94c906bd2fb09100f0",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/understudy/progress.ts"
+      },
+      {
+        "path": "packages/extension/understudy/selectorResolver.ts",
+        "sha256": "1d82fc5ff4b1e04d32ad426161dd3d57ea71928128e4e02d88512db6bfa08e9a",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/extension/understudy/selectorResolver.ts"
+      },
+      {
+        "path": "packages/sdk-ts/package.json",
+        "sha256": "40e693d5c459dc5ca7a99455408840abee72a0c0ce29093bfb59acb440ad2d55",
+        "url": "https://raw.githubusercontent.com/browserbase/stagehand/18b96f2227505695795208d7163e4fb03a9ae401/packages/sdk-ts/package.json"
+      }
+    ]
+  }
+]

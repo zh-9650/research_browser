@@ -1,0 +1,13 @@
+{
+  "name": "browser-execution-research",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "bench": "node benchmarks/run.mjs",
+    "cli": "node adapters/cli.mjs"
+  },
+  "dependencies": { "playwright": "1.56.1" }
+}

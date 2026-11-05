@@ -1,0 +1,8 @@
+{
+  "url": "https://docs.pytest.org/en/stable/",
+  "goal": "只通过官方文档可见导航，找到 fixtures 文档 safe teardowns 对 yield 之前失败的说明。只读导航，不提交表单。记录最终URL与原始可见证据。",
+  "constraints": ["只读", "仅 docs.pytest.org", "不提交表单", "证据不足则 unknown"],
+  "journal": "traces/external-pytest-read/executor.jsonl",
+  "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "grants": [{ "origin": "https://docs.pytest.org", "kinds": ["click"] }]
+}

@@ -1,0 +1,21 @@
+{
+  "url": "http://127.0.0.1:52350/miniwob/click-button.html?instance=fde6b77d-5340-48fe-b786-f77e87afa7d3",
+  "goal": "Complete the original MiniWoB++ task stated in the visible page query.",
+  "constraints": [
+    "Use original 10-second timer",
+    "Do not inspect task source or hidden reward globals"
+  ],
+  "journal": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\miniwob-codex-2026-11-04T15-20-11-837Z\\executor.jsonl",
+  "grants": [
+    {
+      "origin": "http://127.0.0.1:52350",
+      "kinds": [
+        "click",
+        "fill",
+        "select"
+      ]
+    }
+  ],
+  "timeout": 1000,
+  "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+}

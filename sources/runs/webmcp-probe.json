@@ -1,0 +1,35 @@
+[
+  {
+    "enabled": false,
+    "args": [],
+    "browser": "155.0.8059.86",
+    "secureContext": true,
+    "documentModelContext": "undefined",
+    "navigatorModelContext": "undefined",
+    "methods": []
+  },
+  {
+    "enabled": true,
+    "args": [
+      "--enable-features=WebMCP"
+    ],
+    "browser": "155.0.8059.86",
+    "secureContext": true,
+    "documentModelContext": "object",
+    "navigatorModelContext": "undefined",
+    "methods": [
+      "ontoolchange",
+      "executeTool",
+      "getTools",
+      "registerTool",
+      "constructor"
+    ],
+    "roundtrip": {
+      "names": [
+        "research-echo"
+      ],
+      "output": "{\"content\":[{\"type\":\"text\",\"text\":\"controlled-local-probe\"}]}"
+    },
+    "afterAbort": []
+  }
+]

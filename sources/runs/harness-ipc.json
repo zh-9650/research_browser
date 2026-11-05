@@ -1,0 +1,7 @@
+{
+  "command": "python -m pytest --confcutdir=sources/vendor/browser-harness/tests/unit -p no:cacheprovider sources/vendor/browser-harness/tests/unit/test_ipc.py -q",
+  "result": "13 passed in 0.18s",
+  "sha": "b5202aefe2cff511208d5303e09670b5740c99f9",
+  "runtime": "isolated BH_RUNTIME_DIR and BH_TMP_DIR, vendored PYTHONPATH",
+  "scope": "upstream unit test, no browser/daemon side effects"
+}

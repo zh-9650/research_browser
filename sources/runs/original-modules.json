@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-04T09:55:20.874Z",
+  "node": "v24.14.1",
+  "progress": {
+    "timeoutReturned": true,
+    "laterCommitCount": 1
+  },
+  "snapshot": [
+    {
+      "case": "reused-row-changed-business-text",
+      "sameNode": true,
+      "guardChanged": true
+    },
+    {
+      "case": "iframe-and-shadow-buttons",
+      "actualButtons": 2,
+      "exposedClickCandidates": 0,
+      "coverageField": false
+    }
+  ],
+  "browser": "155.0.8059.86"
+}

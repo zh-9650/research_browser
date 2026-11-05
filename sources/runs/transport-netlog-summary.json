@@ -1,0 +1,398 @@
+{
+  "runId": "2026-11-04T15-12-55-067Z",
+  "node": "v24.14.1",
+  "observations": [
+    {
+      "mode": "transport-replay",
+      "repeat": 0,
+      "browser": "155.0.8059.86",
+      "trustedClicks": [
+        true
+      ],
+      "fetchCalls": 1,
+      "cdpRequests": [
+        {
+          "requestId": "40212.3",
+          "method": "POST",
+          "url": "http://127.0.0.1:59525/78fedf7e-de2b-48ed-9b2d-4e5246490952/commit",
+          "timestamp": 1073241.890194
+        }
+      ],
+      "backendAttempts": 2,
+      "backendEffects": 2,
+      "netlog": {
+        "path": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\transport-netlog-2026-11-04T15-12-55-067Z\\transport-replay-0-netlog.json",
+        "sha256": "66edfce9cad612758b2197e45b9078b090e47052068aaec3a3f21e802aaccd0c",
+        "commitSourceIds": [
+          100,
+          101,
+          103
+        ],
+        "restartEvents": [
+          {
+            "type": "HTTP_TRANSACTION_RESTART_AFTER_ERROR",
+            "sourceId": 100,
+            "params": {
+              "net_error": -100
+            },
+            "time": "1073241892"
+          }
+        ],
+        "commitEventTypes": [
+          "CORS_REQUEST",
+          "CHECK_CORS_PREFLIGHT_REQUIRED",
+          "REQUEST_ALIVE",
+          "NETWORK_DELEGATE_BEFORE_URL_REQUEST",
+          "TRANSPORT_SECURITY_STATE_SHOULD_UPGRADE_TO_SSL",
+          "URL_REQUEST_START_JOB",
+          "FIRST_PARTY_SETS_METADATA",
+          "COMPUTED_PRIVACY_MODE",
+          "NETWORK_DELEGATE_BEFORE_START_TRANSACTION",
+          "HTTP_CACHE_GET_BACKEND",
+          "HTTP_STREAM_JOB_CONTROLLER",
+          "HTTP_STREAM_REQUEST",
+          "HTTP_STREAM_JOB_CONTROLLER_BOUND",
+          "PROXY_RESOLUTION_SERVICE",
+          "PROXY_RESOLUTION_SERVICE_RESOLVED_PROXY_LIST",
+          "HTTP_STREAM_JOB_CONTROLLER_PROXY_SERVER_RESOLVED",
+          "HTTP_STREAM_REQUEST_STARTED_JOB",
+          "HTTP_STREAM_REQUEST_BOUND_TO_JOB",
+          "HTTP_STREAM_JOB_BOUND_TO_REQUEST",
+          "URL_REQUEST_DELEGATE_CONNECTED",
+          "LOCAL_NETWORK_ACCESS_CHECK",
+          "UPLOAD_DATA_STREAM_INIT",
+          "HTTP_TRANSACTION_SEND_REQUEST",
+          "HTTP_TRANSACTION_SEND_REQUEST_HEADERS",
+          "UPLOAD_DATA_STREAM_READ",
+          "HTTP_TRANSACTION_SEND_REQUEST_BODY",
+          "HTTP_TRANSACTION_READ_HEADERS",
+          "HTTP_STREAM_PARSER_READ_HEADERS",
+          "HTTP_TRANSACTION_RESTART_AFTER_ERROR",
+          "URL_REQUEST_DELEGATE_RESPONSE_STARTED"
+        ]
+      }
+    },
+    {
+      "mode": "transport-replay",
+      "repeat": 1,
+      "browser": "155.0.8059.86",
+      "trustedClicks": [
+        true
+      ],
+      "fetchCalls": 1,
+      "cdpRequests": [
+        {
+          "requestId": "26864.3",
+          "method": "POST",
+          "url": "http://127.0.0.1:59525/5d2cbf07-41d9-4787-8fe7-ee47310cc853/commit",
+          "timestamp": 1073243.060729
+        }
+      ],
+      "backendAttempts": 1,
+      "backendEffects": 1,
+      "netlog": {
+        "path": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\transport-netlog-2026-11-04T15-12-55-067Z\\transport-replay-1-netlog.json",
+        "sha256": "4a7e32aeedd6dc348daf65bb870fefe6aa7a8e23a2707d428f81e9159e01956e",
+        "commitSourceIds": [
+          113,
+          114
+        ],
+        "restartEvents": [],
+        "commitEventTypes": [
+          "CORS_REQUEST",
+          "CHECK_CORS_PREFLIGHT_REQUIRED",
+          "REQUEST_ALIVE",
+          "NETWORK_DELEGATE_BEFORE_URL_REQUEST",
+          "TRANSPORT_SECURITY_STATE_SHOULD_UPGRADE_TO_SSL",
+          "URL_REQUEST_START_JOB",
+          "FIRST_PARTY_SETS_METADATA",
+          "COMPUTED_PRIVACY_MODE",
+          "NETWORK_DELEGATE_BEFORE_START_TRANSACTION",
+          "HTTP_CACHE_GET_BACKEND",
+          "HTTP_STREAM_JOB_CONTROLLER",
+          "HTTP_STREAM_REQUEST",
+          "HTTP_STREAM_JOB_CONTROLLER_BOUND",
+          "PROXY_RESOLUTION_SERVICE",
+          "PROXY_RESOLUTION_SERVICE_RESOLVED_PROXY_LIST",
+          "HTTP_STREAM_JOB_CONTROLLER_PROXY_SERVER_RESOLVED",
+          "HTTP_STREAM_REQUEST_STARTED_JOB",
+          "HTTP_STREAM_REQUEST_BOUND_TO_JOB",
+          "HTTP_STREAM_JOB_BOUND_TO_REQUEST",
+          "URL_REQUEST_DELEGATE_CONNECTED",
+          "LOCAL_NETWORK_ACCESS_CHECK",
+          "UPLOAD_DATA_STREAM_INIT",
+          "HTTP_TRANSACTION_SEND_REQUEST",
+          "HTTP_TRANSACTION_SEND_REQUEST_HEADERS",
+          "UPLOAD_DATA_STREAM_READ",
+          "HTTP_TRANSACTION_SEND_REQUEST_BODY",
+          "HTTP_TRANSACTION_READ_HEADERS",
+          "HTTP_STREAM_PARSER_READ_HEADERS",
+          "URL_REQUEST_DELEGATE_RESPONSE_STARTED"
+        ]
+      }
+    },
+    {
+      "mode": "transport-replay",
+      "repeat": 2,
+      "browser": "155.0.8059.86",
+      "trustedClicks": [
+        true
+      ],
+      "fetchCalls": 1,
+      "cdpRequests": [
+        {
+          "requestId": "33816.3",
+          "method": "POST",
+          "url": "http://127.0.0.1:59525/792dea6c-5973-444f-a3c5-1fbe51d7f732/commit",
+          "timestamp": 1073244.292823
+        }
+      ],
+      "backendAttempts": 2,
+      "backendEffects": 2,
+      "netlog": {
+        "path": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\transport-netlog-2026-11-04T15-12-55-067Z\\transport-replay-2-netlog.json",
+        "sha256": "41f35d772affd138491a7130a5bdf4acdc4ea0c6f938542ab227ad5118155ac3",
+        "commitSourceIds": [
+          107,
+          108,
+          110
+        ],
+        "restartEvents": [
+          {
+            "type": "HTTP_TRANSACTION_RESTART_AFTER_ERROR",
+            "sourceId": 107,
+            "params": {
+              "net_error": -100
+            },
+            "time": "1073244294"
+          }
+        ],
+        "commitEventTypes": [
+          "CORS_REQUEST",
+          "CHECK_CORS_PREFLIGHT_REQUIRED",
+          "REQUEST_ALIVE",
+          "NETWORK_DELEGATE_BEFORE_URL_REQUEST",
+          "TRANSPORT_SECURITY_STATE_SHOULD_UPGRADE_TO_SSL",
+          "URL_REQUEST_START_JOB",
+          "FIRST_PARTY_SETS_METADATA",
+          "COMPUTED_PRIVACY_MODE",
+          "NETWORK_DELEGATE_BEFORE_START_TRANSACTION",
+          "HTTP_CACHE_GET_BACKEND",
+          "HTTP_STREAM_JOB_CONTROLLER",
+          "HTTP_STREAM_REQUEST",
+          "HTTP_STREAM_JOB_CONTROLLER_BOUND",
+          "PROXY_RESOLUTION_SERVICE",
+          "PROXY_RESOLUTION_SERVICE_RESOLVED_PROXY_LIST",
+          "HTTP_STREAM_JOB_CONTROLLER_PROXY_SERVER_RESOLVED",
+          "HTTP_STREAM_REQUEST_STARTED_JOB",
+          "HTTP_STREAM_REQUEST_BOUND_TO_JOB",
+          "HTTP_STREAM_JOB_BOUND_TO_REQUEST",
+          "URL_REQUEST_DELEGATE_CONNECTED",
+          "LOCAL_NETWORK_ACCESS_CHECK",
+          "UPLOAD_DATA_STREAM_INIT",
+          "HTTP_TRANSACTION_SEND_REQUEST",
+          "HTTP_TRANSACTION_SEND_REQUEST_HEADERS",
+          "UPLOAD_DATA_STREAM_READ",
+          "HTTP_TRANSACTION_SEND_REQUEST_BODY",
+          "HTTP_TRANSACTION_READ_HEADERS",
+          "HTTP_STREAM_PARSER_READ_HEADERS",
+          "HTTP_TRANSACTION_RESTART_AFTER_ERROR",
+          "URL_REQUEST_DELEGATE_RESPONSE_STARTED"
+        ]
+      }
+    },
+    {
+      "mode": "lost-response",
+      "repeat": 0,
+      "browser": "155.0.8059.86",
+      "trustedClicks": [
+        true
+      ],
+      "fetchCalls": 1,
+      "cdpRequests": [
+        {
+          "requestId": "39908.3",
+          "method": "POST",
+          "url": "http://127.0.0.1:59525/4a59d61e-ccb6-4252-9436-d8e5bca47c63/commit",
+          "timestamp": 1073245.944032
+        }
+      ],
+      "backendAttempts": 1,
+      "backendEffects": 1,
+      "netlog": {
+        "path": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\transport-netlog-2026-11-04T15-12-55-067Z\\lost-response-0-netlog.json",
+        "sha256": "19978242e078fa4973978361694a3546c8c8e3845577412fefc15e906ffdf220",
+        "commitSourceIds": [
+          124,
+          125
+        ],
+        "restartEvents": [],
+        "commitEventTypes": [
+          "CORS_REQUEST",
+          "CHECK_CORS_PREFLIGHT_REQUIRED",
+          "REQUEST_ALIVE",
+          "NETWORK_DELEGATE_BEFORE_URL_REQUEST",
+          "TRANSPORT_SECURITY_STATE_SHOULD_UPGRADE_TO_SSL",
+          "URL_REQUEST_START_JOB",
+          "FIRST_PARTY_SETS_METADATA",
+          "COMPUTED_PRIVACY_MODE",
+          "NETWORK_DELEGATE_BEFORE_START_TRANSACTION",
+          "HTTP_CACHE_GET_BACKEND",
+          "HTTP_STREAM_JOB_CONTROLLER",
+          "HTTP_STREAM_REQUEST",
+          "HTTP_STREAM_JOB_CONTROLLER_BOUND",
+          "PROXY_RESOLUTION_SERVICE",
+          "PROXY_RESOLUTION_SERVICE_RESOLVED_PROXY_LIST",
+          "HTTP_STREAM_JOB_CONTROLLER_PROXY_SERVER_RESOLVED",
+          "HTTP_STREAM_REQUEST_STARTED_JOB",
+          "HTTP_STREAM_REQUEST_BOUND_TO_JOB",
+          "HTTP_STREAM_JOB_BOUND_TO_REQUEST",
+          "URL_REQUEST_DELEGATE_CONNECTED",
+          "LOCAL_NETWORK_ACCESS_CHECK",
+          "UPLOAD_DATA_STREAM_INIT",
+          "HTTP_TRANSACTION_SEND_REQUEST",
+          "HTTP_TRANSACTION_SEND_REQUEST_HEADERS",
+          "UPLOAD_DATA_STREAM_READ",
+          "HTTP_TRANSACTION_SEND_REQUEST_BODY",
+          "HTTP_TRANSACTION_READ_HEADERS",
+          "HTTP_STREAM_PARSER_READ_HEADERS",
+          "HTTP_TRANSACTION_READ_RESPONSE_HEADERS",
+          "NETWORK_DELEGATE_HEADERS_RECEIVED",
+          "URL_REQUEST_DELEGATE_RESPONSE_STARTED",
+          "HTTP_TRANSACTION_READ_BODY",
+          "URL_REQUEST_JOB_FILTERED_BYTES_READ",
+          "FAILED"
+        ]
+      }
+    },
+    {
+      "mode": "lost-response",
+      "repeat": 1,
+      "browser": "155.0.8059.86",
+      "trustedClicks": [
+        true
+      ],
+      "fetchCalls": 1,
+      "cdpRequests": [
+        {
+          "requestId": "55196.3",
+          "method": "POST",
+          "url": "http://127.0.0.1:59525/759dc1ce-d5d8-4c2a-a0b1-50c53555d996/commit",
+          "timestamp": 1073247.079049
+        }
+      ],
+      "backendAttempts": 1,
+      "backendEffects": 1,
+      "netlog": {
+        "path": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\transport-netlog-2026-11-04T15-12-55-067Z\\lost-response-1-netlog.json",
+        "sha256": "e4a84ae478e54b2ae572efadb3589274af66eda05dd60c0a620de1fa6925e956",
+        "commitSourceIds": [
+          116,
+          117
+        ],
+        "restartEvents": [],
+        "commitEventTypes": [
+          "CORS_REQUEST",
+          "CHECK_CORS_PREFLIGHT_REQUIRED",
+          "REQUEST_ALIVE",
+          "NETWORK_DELEGATE_BEFORE_URL_REQUEST",
+          "TRANSPORT_SECURITY_STATE_SHOULD_UPGRADE_TO_SSL",
+          "URL_REQUEST_START_JOB",
+          "FIRST_PARTY_SETS_METADATA",
+          "COMPUTED_PRIVACY_MODE",
+          "NETWORK_DELEGATE_BEFORE_START_TRANSACTION",
+          "HTTP_CACHE_GET_BACKEND",
+          "HTTP_STREAM_JOB_CONTROLLER",
+          "HTTP_STREAM_REQUEST",
+          "HTTP_STREAM_JOB_CONTROLLER_BOUND",
+          "PROXY_RESOLUTION_SERVICE",
+          "PROXY_RESOLUTION_SERVICE_RESOLVED_PROXY_LIST",
+          "HTTP_STREAM_JOB_CONTROLLER_PROXY_SERVER_RESOLVED",
+          "HTTP_STREAM_REQUEST_STARTED_JOB",
+          "HTTP_STREAM_REQUEST_BOUND_TO_JOB",
+          "HTTP_STREAM_JOB_BOUND_TO_REQUEST",
+          "URL_REQUEST_DELEGATE_CONNECTED",
+          "LOCAL_NETWORK_ACCESS_CHECK",
+          "UPLOAD_DATA_STREAM_INIT",
+          "HTTP_TRANSACTION_SEND_REQUEST",
+          "HTTP_TRANSACTION_SEND_REQUEST_HEADERS",
+          "UPLOAD_DATA_STREAM_READ",
+          "HTTP_TRANSACTION_SEND_REQUEST_BODY",
+          "HTTP_TRANSACTION_READ_HEADERS",
+          "HTTP_STREAM_PARSER_READ_HEADERS",
+          "HTTP_TRANSACTION_READ_RESPONSE_HEADERS",
+          "NETWORK_DELEGATE_HEADERS_RECEIVED",
+          "URL_REQUEST_DELEGATE_RESPONSE_STARTED",
+          "HTTP_TRANSACTION_READ_BODY",
+          "URL_REQUEST_JOB_FILTERED_BYTES_READ",
+          "FAILED"
+        ]
+      }
+    },
+    {
+      "mode": "lost-response",
+      "repeat": 2,
+      "browser": "155.0.8059.86",
+      "trustedClicks": [
+        true
+      ],
+      "fetchCalls": 1,
+      "cdpRequests": [
+        {
+          "requestId": "52792.3",
+          "method": "POST",
+          "url": "http://127.0.0.1:59525/0dbb9221-8c21-4d48-8e6a-9584a9d88e48/commit",
+          "timestamp": 1073248.244983
+        }
+      ],
+      "backendAttempts": 1,
+      "backendEffects": 1,
+      "netlog": {
+        "path": "C:\\Users\\17381\\Desktop\\research_browser\\traces\\transport-netlog-2026-11-04T15-12-55-067Z\\lost-response-2-netlog.json",
+        "sha256": "c64d41c41a391912fe24a80946c468b9611fe7051902cb907b7850d0dfa1054d",
+        "commitSourceIds": [
+          113,
+          114
+        ],
+        "restartEvents": [],
+        "commitEventTypes": [
+          "CORS_REQUEST",
+          "CHECK_CORS_PREFLIGHT_REQUIRED",
+          "REQUEST_ALIVE",
+          "NETWORK_DELEGATE_BEFORE_URL_REQUEST",
+          "TRANSPORT_SECURITY_STATE_SHOULD_UPGRADE_TO_SSL",
+          "URL_REQUEST_START_JOB",
+          "FIRST_PARTY_SETS_METADATA",
+          "COMPUTED_PRIVACY_MODE",
+          "NETWORK_DELEGATE_BEFORE_START_TRANSACTION",
+          "HTTP_CACHE_GET_BACKEND",
+          "HTTP_STREAM_JOB_CONTROLLER",
+          "HTTP_STREAM_REQUEST",
+          "HTTP_STREAM_JOB_CONTROLLER_BOUND",
+          "PROXY_RESOLUTION_SERVICE",
+          "PROXY_RESOLUTION_SERVICE_RESOLVED_PROXY_LIST",
+          "HTTP_STREAM_JOB_CONTROLLER_PROXY_SERVER_RESOLVED",
+          "HTTP_STREAM_REQUEST_STARTED_JOB",
+          "HTTP_STREAM_REQUEST_BOUND_TO_JOB",
+          "HTTP_STREAM_JOB_BOUND_TO_REQUEST",
+          "URL_REQUEST_DELEGATE_CONNECTED",
+          "LOCAL_NETWORK_ACCESS_CHECK",
+          "UPLOAD_DATA_STREAM_INIT",
+          "HTTP_TRANSACTION_SEND_REQUEST",
+          "HTTP_TRANSACTION_SEND_REQUEST_HEADERS",
+          "UPLOAD_DATA_STREAM_READ",
+          "HTTP_TRANSACTION_SEND_REQUEST_BODY",
+          "HTTP_TRANSACTION_READ_HEADERS",
+          "HTTP_STREAM_PARSER_READ_HEADERS",
+          "HTTP_TRANSACTION_READ_RESPONSE_HEADERS",
+          "NETWORK_DELEGATE_HEADERS_RECEIVED",
+          "URL_REQUEST_DELEGATE_RESPONSE_STARTED",
+          "HTTP_TRANSACTION_READ_BODY",
+          "URL_REQUEST_JOB_FILTERED_BYTES_READ",
+          "FAILED"
+        ]
+      }
+    }
+  ],
+  "scope": "synthetic localhost, one explicit click per isolated Chrome profile; no model"
+}

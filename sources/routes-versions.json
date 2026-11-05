@@ -1,0 +1,389 @@
+[
+  {
+    "repo": "browser-use/browser-use",
+    "sha": "b49a68e4060acb226da8f784194fef301c53a6d7",
+    "commit_date": "2026-10-30T04:28:48Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "browser_use/agent/service.py",
+        "sha256": "b6b6943492b062754acd322f9f1d0a950e0ce30edebe53ac4392ede9b4796ba1",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-use/b49a68e4060acb226da8f784194fef301c53a6d7/browser_use/agent/service.py"
+      },
+      {
+        "path": "browser_use/browser/watchdogs/default_action_watchdog.py",
+        "sha256": "0f679e4de08dd45c8bba824666a1d87569855b00a45f5db3c9c8f61e1957aebc",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-use/b49a68e4060acb226da8f784194fef301c53a6d7/browser_use/browser/watchdogs/default_action_watchdog.py"
+      },
+      {
+        "path": "browser_use/browser/watchdogs/security_watchdog.py",
+        "sha256": "7d4aba8c663602f2fa506befe7a7b63a8074452e83c6706929b531953665f6ac",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-use/b49a68e4060acb226da8f784194fef301c53a6d7/browser_use/browser/watchdogs/security_watchdog.py"
+      },
+      {
+        "path": "browser_use/dom/service.py",
+        "sha256": "43f8e087754ea9a67da21d9576c3485cab53e9f9cf41ebb45d2f03d0107889c3",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-use/b49a68e4060acb226da8f784194fef301c53a6d7/browser_use/dom/service.py"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "135c57671b0ee957669b05a0ca00cc06f645496d351e2e732832c6e276da9a5e",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-use/b49a68e4060acb226da8f784194fef301c53a6d7/LICENSE"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "750d2f19a0b13f209326397388a9f3ff3c0ab893a6b006dfd06fe41bc4f0edb1",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-use/b49a68e4060acb226da8f784194fef301c53a6d7/pyproject.toml"
+      }
+    ]
+  },
+  {
+    "repo": "browser-use/browser-harness",
+    "sha": "b5202aefe2cff511208d5303e09670b5740c99f9",
+    "commit_date": "2026-11-04T03:27:46Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha256": "5afa3d97bf1e6f998d587fa101e3fe0d0c416840b7fe77bcd6ae97690a334631",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/LICENSE"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "c861880e2629ce6355ff645f5977aecad0ccc8950a211d6fe7ba13420a396f98",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/pyproject.toml"
+      },
+      {
+        "path": "src/browser_harness/__init__.py",
+        "sha256": "b159e84a2701448a4905041f48b27bf6d26cc420b597b82e4fdeabbd7fe26c2f",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/src/browser_harness/__init__.py"
+      },
+      {
+        "path": "src/browser_harness/_ipc.py",
+        "sha256": "b46ec6e55ddae9919ada069053dfa12a2555d33a832de57ef5eb3a457cec80b3",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/src/browser_harness/_ipc.py"
+      },
+      {
+        "path": "src/browser_harness/helpers.py",
+        "sha256": "5ea8560a01b74281833923720ffd23ca8e4f6b873c2419c821f7695a04091cf3",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/src/browser_harness/helpers.py"
+      },
+      {
+        "path": "src/browser_harness/paths.py",
+        "sha256": "ba3c6e4c91a8e5f8add837eedd51a1aa391f47a7d11c79db47ac8b8146267ad7",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/src/browser_harness/paths.py"
+      },
+      {
+        "path": "tests/unit/test_helpers.py",
+        "sha256": "b80527d7e7a5fcbaa627a6a42584a96c8d5e071a710ed6fe4f175c96fdb7dd55",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/tests/unit/test_helpers.py"
+      },
+      {
+        "path": "tests/unit/test_ipc.py",
+        "sha256": "22cd7f2fa54b9fabe43ae9ffc74542ccc06f7eccd64a98ee036c4e596ac73df6",
+        "url": "https://raw.githubusercontent.com/browser-use/browser-harness/b5202aefe2cff511208d5303e09670b5740c99f9/tests/unit/test_ipc.py"
+      }
+    ]
+  },
+  {
+    "repo": "microsoft/fara",
+    "sha": "a675d6d61c41c47ae87bacefeab22caad18e3e84",
+    "commit_date": "2026-07-22T17:03:30Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha256": "98a96c38494df4963951e32b81ec4effebe4c8a812ab8d9e7d185d59e86fe2fc",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/LICENSE"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "e4ac4c5766f309f01268bf6d380befbd36004516f6a336928acc683231ccfd88",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/pyproject.toml"
+      },
+      {
+        "path": "src/fara/agents/coord_spaces.py",
+        "sha256": "0f8e4e0ba3fc6a600fa7d804dc159f8eeb70a4775ad29b1b7621496b935b9660",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/src/fara/agents/coord_spaces.py"
+      },
+      {
+        "path": "src/fara/agents/fara/fara15_agent.py",
+        "sha256": "45c1b222d067a558449714bbe077b81d1b333420eaaabfac8f039133387f7521",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/src/fara/agents/fara/fara15_agent.py"
+      },
+      {
+        "path": "webeval/src/webeval/metric_helpers.py",
+        "sha256": "5f9432fce8a5ec7b57eb2307a392bc010922fefe7e7225e377213a28a4acf713",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/webeval/src/webeval/metric_helpers.py"
+      },
+      {
+        "path": "webeval/src/webeval/rubric_agent/data_point.py",
+        "sha256": "1407857063e6febb36e22e99ae152ced59e5876b78d634b127a2f69686e06197",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/webeval/src/webeval/rubric_agent/data_point.py"
+      },
+      {
+        "path": "webeval/src/webeval/rubric_agent/mm_rubric_agent.py",
+        "sha256": "865d93e6a120f1b8a9a4ce1a834ece4680d466e893f602322ff94b29a46792d6",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/webeval/src/webeval/rubric_agent/mm_rubric_agent.py"
+      },
+      {
+        "path": "webeval/src/webeval/rubric_agent/verifier_agent.py",
+        "sha256": "0a57bfd5bd95b232bfe66dab13e98144600c3691b9c3b18249da7a573ce6ad32",
+        "url": "https://raw.githubusercontent.com/microsoft/fara/a675d6d61c41c47ae87bacefeab22caad18e3e84/webeval/src/webeval/rubric_agent/verifier_agent.py"
+      }
+    ]
+  },
+  {
+    "repo": "ServiceNow/BrowserGym",
+    "sha": "27a90ce815098f43414e93491e06907af468e45b",
+    "commit_date": "2026-10-28T06:29:43Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "browsergym/core/pyproject.toml",
+        "sha256": "550cb38e12806607758f02212ed8e2eaf9ea9feaa45f4a608b404cd9f215fff8",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/pyproject.toml"
+      },
+      {
+        "path": "browsergym/core/requirements.txt",
+        "sha256": "92d414cc9b947559cb68a91c9553f6da7ff23a8394d6e11f7e17632b4aa00834",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/requirements.txt"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/__init__.py",
+        "sha256": "e73ac77db3008310a4ddb449eef3906265ff74134d69915e89822b57bdc3dfa7",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/__init__.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/__init__.py",
+        "sha256": "3951f490ea08e8a377c62d9fbe277e78c0e8124eafa3817ecd91ddaa4626e3f3",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/__init__.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/base.py",
+        "sha256": "55779013e6161deda08aeb6b343c6d5c770eb6984e450d55bf4d819ec1fe1b2e",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/base.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/functions.py",
+        "sha256": "9e6073e150b3a95ceddddf329feb451b760b6706891c43f6c0c426df44ee05a4",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/functions.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/highlevel.py",
+        "sha256": "371be3b9d5580e08faceb1262ef47373b29366da5c2800b7e28014b7692c7765",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/highlevel.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/parsers.py",
+        "sha256": "4eeb4e83f2f06bdfd6e87c14cca5dcd54bfc96c43b56e8afb6762bf0462c28ee",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/parsers.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/python.py",
+        "sha256": "750363fe78bbb3a1896fc06acd6c1d29611dd4b364f5a16328775e41978b5731",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/python.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/action/utils.py",
+        "sha256": "8ca45f9b620bd576f9e6c61fe0912282aec3b9d295ba1ad16c7d837372f5974b",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/action/utils.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/chat.py",
+        "sha256": "2efecf2e7946c99ac5fb047e82460c619ef1d033657fef67a4f160705ae1b7f6",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/chat.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/chat_files/assistant.png",
+        "sha256": "ec8e9e5cefdfee2ff9c8f959eb922576fb41043a234cdb301312f60988de63f8",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/chat_files/assistant.png"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/chat_files/chatbox.html",
+        "sha256": "16a6b60afddba54261891bea73c9147bf0d0eb19f16c08d0934be02118c0b8c5",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/chat_files/chatbox.html"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/chat_files/chatbox_modern.html",
+        "sha256": "602f60ca817f7c6d2d18febeaabb41e1d795b921d433cdfc29ea159daa959bf0",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/chat_files/chatbox_modern.html"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/chat_files/img/send.svg",
+        "sha256": "90d4e9c6faa28942bf2db999adc104bc768b85d306d80393f60369cbaccf2c83",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/chat_files/img/send.svg"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/constants.py",
+        "sha256": "aa4a9eb93601dc8c8fd4a4d3ca9ed752503314aaa21c50685ab71657828c5f43",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/constants.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/env.py",
+        "sha256": "867cc6efdfead356839fef8a26b492502b8b5e3d165d1b3c17d24aaeec268d63",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/env.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/javascript/frame_mark_elements.js",
+        "sha256": "6ecfbba89d756c37874bdf692e4bf24126459ab79f9120c1f053305b7ba2978a",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/javascript/frame_mark_elements.js"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/javascript/frame_unmark_elements.js",
+        "sha256": "ee1324efd8df5c12693fba0c4814ecb829ef92860d972e5377bdd5c905b28526",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/javascript/frame_unmark_elements.js"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/observation.py",
+        "sha256": "c3e273ddc222cfd3eaaa2346acfa991df4d77285befee40bc17ee142203a557c",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/observation.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/registration.py",
+        "sha256": "489a939640d16d481b624e6e35237c6e427c4847f3354d90d5e1746aaa310336",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/registration.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/spaces.py",
+        "sha256": "8a9e73c03f3dfa4bc8b41e1fcdf83a4705e85dcc70f23ad3727a6c66934c6e65",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/spaces.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/core/task.py",
+        "sha256": "d88602de809c3b808c8adc5ca17d6d0d13a065109673e37326a0a75c5ab78e17",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/core/task.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/utils/mcp_server.py",
+        "sha256": "5ace8db4ff8639ed79517c7d62ce522144cd7ee3ad23d0779e145cf7526fb3aa",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/utils/mcp_server.py"
+      },
+      {
+        "path": "browsergym/core/src/browsergym/utils/obs.py",
+        "sha256": "eb08e2c263cf78c495ed942129bf6eab7da744e75b1213ed15bf6a13d92b79d7",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/core/src/browsergym/utils/obs.py"
+      },
+      {
+        "path": "browsergym/miniwob/src/browsergym/miniwob/base.py",
+        "sha256": "4d7b82b7b63403a9774969f4166ab858243bef381335ae1af3ced345e66552ab",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/browsergym/miniwob/src/browsergym/miniwob/base.py"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "b192c58991e8ff585cc574615d40e74185404d4b96c1109d423071ab1367344b",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/LICENSE"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "94d8e8462714d69f26101dc61caf1f1e8f1df4fffed634ede52440a465c45a00",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/pyproject.toml"
+      },
+      {
+        "path": "tests/core/test_task.py",
+        "sha256": "e3432a6c7bbc550a92b577c157a896249cc85ec13183d4074804f5ccb13fcba0",
+        "url": "https://raw.githubusercontent.com/ServiceNow/BrowserGym/27a90ce815098f43414e93491e06907af468e45b/tests/core/test_task.py"
+      }
+    ]
+  },
+  {
+    "repo": "steel-dev/steel-browser",
+    "sha": "d86cc79917f53e00c7158cd639781b944354d06c",
+    "commit_date": "2026-11-03T21:39:43Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "api/src/modules/sessions/sessions.routes.ts",
+        "sha256": "7bcebcfa6d6e8f177ccd2e12a18ebcdfd8a8111cc95cfb73b787d70053fe38da",
+        "url": "https://raw.githubusercontent.com/steel-dev/steel-browser/d86cc79917f53e00c7158cd639781b944354d06c/api/src/modules/sessions/sessions.routes.ts"
+      },
+      {
+        "path": "api/src/services/session.service.test.ts",
+        "sha256": "a47d7d2be1af26f74204a2634f368736f6fc926c685008801ae10ab60806864c",
+        "url": "https://raw.githubusercontent.com/steel-dev/steel-browser/d86cc79917f53e00c7158cd639781b944354d06c/api/src/services/session.service.test.ts"
+      },
+      {
+        "path": "api/src/services/session.service.ts",
+        "sha256": "df2d38b6e4a68a7c458cf320ad1f93990043e42fbea506c76e6d457f2c7878f5",
+        "url": "https://raw.githubusercontent.com/steel-dev/steel-browser/d86cc79917f53e00c7158cd639781b944354d06c/api/src/services/session.service.ts"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "url": "https://raw.githubusercontent.com/steel-dev/steel-browser/d86cc79917f53e00c7158cd639781b944354d06c/LICENSE"
+      },
+      {
+        "path": "package.json",
+        "sha256": "82eaaaf305dd9a0797199e7294cb52278fce88c38b4a1d386500030287704bbf",
+        "url": "https://raw.githubusercontent.com/steel-dev/steel-browser/d86cc79917f53e00c7158cd639781b944354d06c/package.json"
+      }
+    ]
+  },
+  {
+    "repo": "webmachinelearning/webmcp",
+    "sha": "6cd745ac8a186122bd3f4aeaeb1d6cfa820251d2",
+    "commit_date": "2026-11-02T13:10:19Z",
+    "retrieved": "2026-11-04",
+    "tree_truncated": false,
+    "files": [
+      {
+        "path": "implementation-status.md",
+        "sha256": "555b564af51df41c43f75ee887343d9a64c2728da00c8e5eb35102afd312a828",
+        "url": "https://raw.githubusercontent.com/webmachinelearning/webmcp/6cd745ac8a186122bd3f4aeaeb1d6cfa820251d2/implementation-status.md"
+      },
+      {
+        "path": "index.bs",
+        "sha256": "06f0af213cf59f9cf662bd31f23556b462ed665fb2b80f5d42f9fae37735356b",
+        "url": "https://raw.githubusercontent.com/webmachinelearning/webmcp/6cd745ac8a186122bd3f4aeaeb1d6cfa820251d2/index.bs"
+      },
+      {
+        "path": "LICENSE.md",
+        "sha256": "ad6c4259239fc10a64f07fec660da5017dcd606ac7c42b5756270fe580e5e18d",
+        "url": "https://raw.githubusercontent.com/webmachinelearning/webmcp/6cd745ac8a186122bd3f4aeaeb1d6cfa820251d2/LICENSE.md"
+      },
+      {
+        "path": "README.md",
+        "sha256": "8ac90b8bcaa8ae476de7f9f453e3178a9a658f7108d41057ed04f628edbe6714",
+        "url": "https://raw.githubusercontent.com/webmachinelearning/webmcp/6cd745ac8a186122bd3f4aeaeb1d6cfa820251d2/README.md"
+      }
+    ]
+  },
+  {
+    "repo": "chromium/src",
+    "directory": "chromium",
+    "sha": "e69d3115830cdbd2bf0053b1bc50aba5fa5b56e1",
+    "source_url": "https://chromium.googlesource.com/chromium/src/+/e69d3115830cdbd2bf0053b1bc50aba5fa5b56e1/net/http/http_network_transaction.cc",
+    "files": [
+      {
+        "path": "about_flags.cc",
+        "url": "https://chromium.googlesource.com/chromium/src/+/e69d3115830cdbd2bf0053b1bc50aba5fa5b56e1/chrome/browser/about_flags.cc?format=TEXT",
+        "encoding": "base64",
+        "sha256": "ad136b902841df8a210296002a3c09e7a96fd702557d9cc1d6f9c69b6aace4db"
+      },
+      {
+        "path": "http_network_transaction.cc",
+        "url": "https://chromium.googlesource.com/chromium/src/+/e69d3115830cdbd2bf0053b1bc50aba5fa5b56e1/net/http/http_network_transaction.cc?format=TEXT",
+        "encoding": "base64",
+        "sha256": "c553005a1bfc88b1b204cc86c9bda41e778dbac0e3da761c80c458080b3cd971"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "368cca1106be99d39ecd32a38d8305585d802a475effb66380b91ffc9bcf709b"
+        ,"url": "https://chromium.googlesource.com/chromium/src/+/e69d3115830cdbd2bf0053b1bc50aba5fa5b56e1/LICENSE?format=TEXT",
+        "encoding": "base64"
+      },
+      {
+        "path": "runtime_enabled_features.json5",
+        "url": "https://chromium.googlesource.com/chromium/src/+/e69d3115830cdbd2bf0053b1bc50aba5fa5b56e1/third_party/blink/renderer/platform/runtime_enabled_features.json5?format=TEXT",
+        "encoding": "base64",
+        "sha256": "ca21530a5e014cf828c5fb40eb5c559f0e41bb4abaf7b3daeecafe21da866a9c"
+      }
+    ],
+    "license": "BSD-3-Clause"
+  }
+]

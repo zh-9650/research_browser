@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-04T10:01:07.052695+00:00",
+  "python": "3.13.13",
+  "packages": {
+    "playwright": "1.58.0",
+    "numpy": "2.4.4"
+  },
+  "fara_partial_functions": {
+    "invalid_scores_rejected": [
+      true,
+      true,
+      true
+    ],
+    "boolean_score_accepted": true,
+    "conditional_score": {
+      "total_max_points": 1.0,
+      "total_earned_points": 1.0
+    },
+    "full_verifier_executed": false
+  },
+  "browser_use_partial_function": {
+    "127.0.0.1": true,
+    "2130706433": true,
+    "0x7f000001": true,
+    "127.1": true,
+    "example.com": false
+  },
+  "browsergym": {
+    "browser": "155.0.8059.86",
+    "initial_observation_keys": [
+      "active_page_index",
+      "axtree_object",
+      "chat_messages",
+      "dom_object",
+      "elapsed_time",
+      "extra_element_properties",
+      "focused_element_bid",
+      "goal",
+      "goal_object",
+      "last_action",
+      "last_action_error",
+      "open_pages_titles",
+      "open_pages_urls",
+      "screenshot",
+      "url"
+    ],
+    "self_claim": {
+      "reward": 0.0,
+      "done": false
+    },
+    "actual_action": {
+      "reward": 1.0,
+      "done": true,
+      "records": 1,
+      "validations": 2
+    }
+  },
+  "webmcp_feature_detection": {
+    "documentModelContext": "undefined",
+    "navigatorModelContext": "undefined",
+    "navigatorModelContextTesting": "undefined",
+    "secureContext": false
+  }
+}

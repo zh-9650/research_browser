@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { mkdirSync, openSync, readFileSync, writeSync, fsyncSync, closeSync, unlinkSync } from 'node:fs';
 import { dirname } from 'node:path';
 
@@ -21,19 +21,23 @@ function describe(el) {
   const norm = s => (s || '').replace(/\s+/g, ' ').trim();
   const container = el.closest('tr,[role=row],article,[role=group],fieldset,form');
   const form = el.form || null;
+  const role = el.getAttribute('role') || el.tagName.toLowerCase();
+  const ariaChecked = el.getAttribute('aria-checked');
   const fieldState = el.tagName === 'SELECT'
     ? { value: el.value, options: [...el.options].map(o => ({ value: o.value, label: o.label, selected: o.selected, disabled: o.disabled })) }
     : ['INPUT', 'TEXTAREA'].includes(el.tagName)
-      ? el.type === 'password' ? { sensitive: true, hasValue: !!el.value } : { value: el.value, ...(['checkbox', 'radio'].includes(el.type) ? { checked: el.checked } : {}) }
-      : null;
+      ? el.type === 'password' ? { sensitive: true, hasValue: !!el.value }
+        : el.type === 'file' ? { fileCount: el.files.length }
+        : { value: el.value, ...(['checkbox', 'radio'].includes(el.type) ? { checked: el.checked } : {}) }
+      : role === 'switch' && ['true', 'false'].includes(ariaChecked) ? { checked: ariaChecked === 'true' } : null;
   return {
     connected: el.isConnected,
     tag: el.tagName,
-    role: el.getAttribute('role') || el.tagName.toLowerCase(),
+    role,
     name: norm(el.getAttribute('aria-label') || el.labels?.[0]?.textContent || el.innerText || el.getAttribute('placeholder')),
     context: norm(container?.innerText),
     href: el.getAttribute('href'),
-    type: el.getAttribute('type'),
+    type: el.getAttribute('type')?.toLowerCase() ?? null,
     fieldState,
     formOwner: form ? { id: form.id, name: form.getAttribute('name'), action: form.action, method: form.method, target: form.target } : null,
     formAttribute: el.getAttribute('form'),
@@ -89,6 +93,8 @@ export class Journal {
  * It is NOT a security boundary against hostile browser scripts or a compromised host.
  */
 export class Executor {
+  #refScope = randomUUID();
+
   constructor(page, { journal, grants, timeout = 800, maxTargets = 300, maxTextChars = 16000 } = {}) {
     this.page = page;
     this.journal = new Journal(journal);
@@ -124,12 +130,12 @@ export class Executor {
         documents.push({ frame: frameIndex, text: content.slice(textOffset, end), offset: textOffset, totalChars: content.length,
           nextOffset: end < content.length ? end : null, truncated: textOffset > 0 || end < content.length });
         if (textOffset > 0 || end < content.length) gaps.push(`frame ${frameIndex}: partial document text range ${textOffset}-${end} of ${content.length}`);
-        const handles = await frame.locator('button,a[href],input,select,textarea,[role=button],[role=checkbox]').elementHandles();
+        const handles = await frame.locator('button,a[href],input,select,textarea,[role=button],[role=checkbox],[role=switch],[role=option]').elementHandles();
         for (const handle of handles) {
           if (targets.length >= this.maxTargets) { await handle.dispose(); continue; }
           if (!await handle.isVisible()) { await handle.dispose(); continue; }
           const identity = await handle.evaluate(describe);
-          const ref = `r${rev}-${targets.length + 1}`;
+          const ref = `r${this.#refScope}-${rev}-${targets.length + 1}`;
           const target = { ref, frame: frameIndex, ...structuredClone(identity), actions: supportedActions(identity) };
           this.refs.set(ref, { handle, frame, epoch: this.frameEpochs.get(frame) || 0, identity, rev, url: frame.url() });
           targets.push(target);
@@ -159,14 +165,23 @@ export class Executor {
       return result;
     }finally{busyPages.delete(this.page);}
   }
-  async act(input, { postcondition } = {}) {
+  async act(input, { postcondition, hostFile } = {}) {
     // Take an immutable private intent before any await or authorization check.
     // Callers may reuse/mutate their original object while actionability waits.
     try { input = structuredClone(input); } catch { input = null; }
     const base = { operationId: input?.operationId, dispatch: 'not_sent', target_reached: 'unknown', page_effect: 'unknown', postcondition: 'unknown', task_goal: 'unknown', retry_safety: 'reobserve' };
     const fail = error => ({ ...base, error });
     if (this.closed) return fail('SESSION_CLOSED');
-    if (!input || typeof input.operationId !== 'string' || !/^[\w-]{1,100}$/.test(input.operationId) || !['click', 'fill', 'select'].includes(input.kind) || typeof input.ref !== 'string' || (input.kind !== 'click' && typeof input.value !== 'string')) return fail('MODEL_DECISION_INVALID');
+    if (!input || typeof input.operationId !== 'string' || !/^[\w-]{1,100}$/.test(input.operationId) || !['click', 'fill', 'select', 'attach'].includes(input.kind) || typeof input.ref !== 'string' || (['fill', 'select'].includes(input.kind) && typeof input.value !== 'string')) return fail('MODEL_DECISION_INVALID');
+    let file;
+    if (input.kind === 'attach') {
+      // The trusted SDK host supplies bytes separately from the model action.
+      const { name, mimeType, buffer } = hostFile || {};
+      if (typeof name !== 'string' || !/^[\w.\p{L}-]{1,120}$/u.test(name) || ['.', '..'].includes(name)
+          || typeof mimeType !== 'string' || !/^[\w.+-]+\/[\w.+-]+$/.test(mimeType)
+          || !Buffer.isBuffer(buffer) || buffer.length > 8 * 1024 * 1024) return fail('INVALID_HOST_FILE');
+      file = { name, mimeType, buffer: Buffer.from(buffer) };
+    }
     if (busyPages.has(this.page)) return fail('SESSION_BUSY');
     busyPages.add(this.page);
     try {
@@ -179,9 +194,11 @@ export class Executor {
       catch { return fail('TARGET_STALE'); }
       if (entry.frame.isDetached() || (this.frameEpochs.get(entry.frame) || 0) !== entry.epoch || entry.frame.url() !== entry.url) return fail('FRAME_CHANGED');
       if (!identity.connected || hash(identity) !== hash(entry.identity)) return fail('TARGET_STALE');
+      if (identity.tag === 'INPUT' && identity.type === 'file' && !file) return fail('MODEL_DECISION_INVALID');
       if(input.kind==='fill'&&!supportedActions(identity).includes('fill'))return fail('MODEL_DECISION_INVALID');
       if (input.kind === 'fill' && !['INPUT', 'TEXTAREA'].includes(identity.tag)) return fail('MODEL_DECISION_INVALID');
       if (input.kind === 'select' && identity.tag !== 'SELECT') return fail('MODEL_DECISION_INVALID');
+      if (file && (identity.tag !== 'INPUT' || identity.type?.toLowerCase() !== 'file' || identity.disabled)) return fail('MODEL_DECISION_INVALID');
       const origin = new URL(entry.frame.url()).origin;
       const topOrigin = new URL(this.page.url()).origin;
       if (!this.grants.some(g => g.origin === topOrigin)) return fail('POLICY_DENIED');
@@ -190,7 +207,7 @@ export class Executor {
       // Block explicit link/form destinations outside trusted host origin grants.
       // This is a navigation preflight, not a network firewall against arbitrary JS.
       const isSubmitter = identity.tag === 'BUTTON' && (!identity.type || identity.type === 'submit') || identity.tag === 'INPUT' && ['submit', 'image'].includes(identity.type);
-      const destination = input.kind === 'click' ? identity.href || (isSubmitter ? identity.submitAction : null) : null;
+      const destination = file ? identity.submitAction : input.kind === 'click' ? identity.href || (isSubmitter ? identity.submitAction : null) : null;
       if (destination) {
         let url;
         try { url = new URL(destination, entry.frame.url()); } catch { return fail('POLICY_DENIED'); }
@@ -206,7 +223,8 @@ export class Executor {
       // Trial may wait while a virtualized row silently changes business identity.
       const last = await entry.handle.evaluate(describe).catch(() => null);
       if (!last || hash(last) !== hash(entry.identity)) return fail('TARGET_STALE');
-      this.journal.append({ event: 'dispatch_intent', operationId: input.operationId, kind: input.kind, targetDigest: hash(last), rev: entry.rev });
+      this.journal.append({ event: 'dispatch_intent', operationId: input.operationId, kind: input.kind, targetDigest: hash(last), rev: entry.rev,
+        ...(file ? { fileSha256: createHash('sha256').update(file.buffer).digest('hex'), fileBytes: file.buffer.length } : {}) });
       base.dispatch = 'unknown';
       base.retry_safety = 'do_not_repeat_without_reconciliation';
       try {
@@ -214,6 +232,7 @@ export class Executor {
         if (input.kind === 'click') await entry.handle.click(opts);
         if (input.kind === 'fill') await entry.handle.fill(input.value, opts);
         if (input.kind === 'select') await entry.handle.selectOption(input.value, opts);
+        if (file) await entry.handle.setInputFiles(file, opts);
         base.dispatch = 'sent';
         // Browser API completion is not proof of event-handler receipt or business success.
         if (postcondition) base.postcondition = await postcondition() ? 'met' : 'unmet';

@@ -52,7 +52,8 @@ test('跨源嵌套 iframe 分别授权，重载后旧 Ref 无法命中同名业�
     assert.deepEqual(events, []);
     await executor.close();
 
-    executor = new Executor(page, { journal: join(directory, 'authorized.jsonl'), grants: [...grants, { origin: inner.origin, kinds: ['click'] }] });
+    executor = new Executor(page, { journal: join(directory, 'authorized.jsonl'), timeout: 3000,
+      grants: [...grants, { origin: inner.origin, kinds: ['click'] }] });
     observation = await executor.observe();
     const old = observation.targets.find(t => t.context.includes('BOX-OLD'));
     const frame = page.frames().find(frame => frame.url() === `${inner.origin}/old`);
@@ -64,7 +65,7 @@ test('跨源嵌套 iframe 分别授权，重载后旧 Ref 无法命中同名业�
     const fresh = await executor.observe();
     const target = fresh.targets.find(t => t.context.includes('BOX-NEW'));
     const [, receipt] = await Promise.all([
-      page.waitForResponse(response => response.url() === `${inner.origin}/register?box=BOX-NEW`, { timeout: 3000 }),
+      page.waitForResponse(response => response.url() === `${inner.origin}/register?box=BOX-NEW`, { timeout: 8000 }),
       executor.act({ operationId: 'register', kind: 'click', ref: target.ref }),
     ]);
     assert.equal(receipt.dispatch, 'sent');

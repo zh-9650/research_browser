@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
  * Does not read/copy credentials, switch provider, execute a browser action,
  * or retry a model failure. This is not a hardened model sandbox.
  */
-export async function codexDecision({ state, schema, directory, executable = 'codex.exe', timeoutMs = 90000, model, reasoningEffort, workingDirectory }) {
+export async function codexDecision({ state, schema, directory, executable = 'codex.exe', timeoutMs = 90000, model, reasoningEffort, workingDirectory, images = [] }) {
   const dir=resolve(directory), cwd=workingDirectory ? resolve(workingDirectory) : join(dir,'context');
   await mkdir(dir,{recursive:true});
   await mkdir(cwd,{recursive:true});
@@ -21,7 +21,8 @@ export async function codexDecision({ state, schema, directory, executable = 'co
   await writeFile(join(dir,'prompt.txt'),prompt);
   const disabled=['shell_tool','apps','browser_use','browser_use_external','computer_use','in_app_browser','plugins','multi_agent','hooks','image_generation'];
   const args=['exec','--json','--ephemeral','--sandbox','read-only','--skip-git-repo-check',...(model?['--model',model]:[]),...(reasoningEffort?['-c',`model_reasoning_effort="${reasoningEffort}"`]:[]),...disabled.flatMap(name=>['--disable',name]),
-    '-c','web_search="disabled"','--output-schema',schemaFile,'--output-last-message',answerFile,'-'];
+    '-c','web_search="disabled"',...(images.length ? ['--image', ...images.map(file => resolve(file))] : []),
+    '--output-schema',schemaFile,'--output-last-message',answerFile,'-'];
   const started=Date.now();
   const child=spawn(executable,args,{cwd,stdio:['pipe','pipe','pipe'],windowsHide:true});
   let stdout='',stderr='',timedOut=false,overflow=false;

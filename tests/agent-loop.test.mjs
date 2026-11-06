@@ -11,6 +11,34 @@ const answer=kind=>({validRun:true,usage:{input_tokens:1,output_tokens:1},answer
 const fixture=(receipt={dispatch:'sent',error:null})=>({calls:0,async observe(){return structuredClone(observation);},async act(){this.calls++;return receipt;}});
 const directory=()=>mkdtemp(join(tmpdir(),'browser-agent-loop-'));
 
+test('按需视觉观察缺失时，即使决策端越过 schema 也拒绝坐标点击', async () => {
+  const executor = fixture();
+  executor.page = { viewportSize: () => ({width:640,height:360}) };
+  const result = await runAgent({executor, task, directory:await directory(), mode:'hybrid',
+    shouldCaptureImage: () => false,
+    decide: async request => {
+      assert.equal(request.images, undefined);
+      assert.equal(request.schema.properties.kind.enum.includes('visual_click'), false);
+      return answer('visual_click');
+    },
+  });
+  assert.equal(result.terminal, 'VISUAL_OBSERVATION_REQUIRED');
+  assert.equal(result.steps[0].screenshotBytes, 0);
+  assert.equal(executor.calls, 0);
+});
+
+test('独立完成证据保留事实，模型服务终止原因仍供批次调度使用',async()=>{
+  const executor=fixture();
+  const result=await runAgent({executor,task,directory:await directory(),
+    decide:async()=>({validRun:false,usage:null,answer:null}),
+    verifyGoal:async()=>({status:'verified',evidence:'backend:existing-record=1'}),
+  });
+  assert.equal(result.terminal,'GOAL_VERIFIED');
+  assert.equal(result.controllerTerminal,'MODEL_UNAVAILABLE');
+  assert.equal(result.tokenAccountingComplete,false);
+  assert.equal(executor.calls,0);
+});
+
 test('控制器安全：未知写入后停止，不让后续模型建议重试',async()=>{
   const executor=fixture({dispatch:'unknown',error:'ACTION_RESULT_UNKNOWN'});let decisions=0;
   const result=await runAgent({executor,task,directory:await directory(),decide:async()=>{decisions++;return answer('click');}});

@@ -26,7 +26,7 @@ test('自由 Locator 必须唯一且绑定同一次观察中的节点', async ()
       await assert.rejects(normalizeDecision(answer, { mode: 'locator', observation, executor }), /TARGET_AMBIGUOUS/);
       answer.locator.within = 'missing-visible-scope';
       await assert.rejects(normalizeDecision(answer, { mode: 'locator', observation, executor }), /LOCATOR_SCOPE_TEXT_NOT_FOUND/);
-      answer.locator.within = await page.locator('tbody tr').first().locator('td').first().innerText();
+      answer.locator.within = target.context;
       answer.value = 'extra metadata has no meaning for click';
       const plan = await normalizeDecision(answer, { mode: 'locator', observation, executor });
       assert.equal(plan.actions[0].ref, target.ref);
@@ -39,7 +39,7 @@ test('自由 Locator 必须唯一且绑定同一次观察中的节点', async ()
 });
 
 test('复合程序预检整段动作，未知结果后不执行后续指令', async () => {
-  const targets = ['r1-1', 'r1-2'].map(ref => ({ ref, frame: 0, name: ref, context: '', actions: ['click'] }));
+  const targets = ['r1-1', 'r1-2'].map(ref => ({ ref, frame: 0, name: ref, context: '', actions: ['fill','click'] }));
   for (const badSuffix of [true, false]) {
     const calls = [];
     const executor = {
@@ -49,9 +49,16 @@ test('复合程序预检整段动作，未知结果后不执行后续指令', as
     const result = await runAgent({ executor, mode: 'program', task: { goal: 'fixture' }, maxModelCalls: 1,
       directory: await mkdtemp(join(tmpdir(), 'decision-program-')),
       decide: async () => ({ validRun: true, usage: { input_tokens: 1, output_tokens: 1 }, answer: {
-        kind: 'program', reason: 'fixture', steps: [{ action: 'click:r1-1', value: '' }, { action: badSuffix ? 'click:absent' : 'click:r1-2', value: '' }],
+        kind: 'program', reason: 'fixture', steps: [{ action: 'fill:r1-1', value: 'updated' }, { action: badSuffix ? 'click:absent' : 'click:r1-2', value: '' }],
       } }) });
     assert.equal(calls.length, badSuffix ? 0 : 1);
     if (!badSuffix) assert.equal(result.terminal, 'ACTION_RECONCILIATION_REQUIRED');
   }
+});
+
+test('程序在可能写入的点击后必须重新观察', async () => {
+  const observation = { targets: ['r1-1', 'r1-2'].map(ref => ({ ref, actions: ['click'] })) };
+  await assert.rejects(normalizeDecision({kind:'program',reason:'fixture',steps:[
+    {action:'click:r1-1',value:''},{action:'click:r1-2',value:''},
+  ]},{mode:'program',observation}), /PROGRAM_REQUIRES_OBSERVATION_AFTER_CLICK/);
 });

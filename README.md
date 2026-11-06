@@ -61,6 +61,8 @@ CLI观察默认启用无损共享上下文：仅在JSON更小时，把重复的`
 - [NetLog 根因证据](failures/transport-replay-evidence.md)：单次 trusted click/JS fetch，浏览器事务内部重启与重复后端提交。
 - [研究假设](hypotheses/identity-and-recovery.md)、[当前决策](decisions/001-experiment-first.md) 与 [.agent/checkpoint.md](.agent/checkpoint.md) 记录后续工作。
 - [完整覆盖账本](reports/coverage-status.md)逐项列出W-A–W-L与原36场景的证据和缺口；[模型接入记录](reports/model-interface.md)保留兼容性失败、实际usage与安全边界。
+- [同模型三模式初始对照](reports/decision-mode-comparison.md)与[修复补测](reports/decision-mode-recheck.md)分别保留独立业务判分、模型用量与失败轨迹。
+- [发布版 agent-browser 同模型对照](reports/decision-mature-baseline.md)单列原生 CLI 行为、共享宿主的终止原因及后端真值。
 
 不提供 exactly-once 保证。身份复核与输入之间存在竞态窗口；同文本不同业务实体可能无法区分；观察不是完整 AXTree，Canvas/closed-shadow/图片语义缺失；没有请求级外传拦截或完整抗注入策略；当前日志与截图仅使用合成数据，尚无通用脱敏。
 

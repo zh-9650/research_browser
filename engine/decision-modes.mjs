@@ -14,7 +14,7 @@ export function decisionSpace(observation,mode='ref') {
     rules:['Select an exact action token. Tokens combine a supported operation and an observed target. For click, leave value empty.']};
   if(mode==='program')return {schema:{type:'object',properties:{kind:{type:'string',enum:['program',...controls]},steps:{type:'array',maxItems:8,items:{type:'object',properties:{action:{type:'string',enum:tokens.length?tokens:['NO_LEGAL_ACTION']},value:string},required:['action','value'],additionalProperties:false}},reason:string},required:['kind','steps','reason'],additionalProperties:false},choices,
     rules:['Write a bounded straight-line program with at most 8 observed action tokens. Use an empty value for click.',
-      'Use several currently independent fields in one program when safe. End the program before navigation, dynamic control changes or a confirmation screen requiring new observation.',
+      'Use several currently independent fields in one program when safe. A click must be the last instruction. Start a new decision after navigation, dynamic control changes or a confirmation screen.',
       'Every instruction is checked before any instruction dispatches. A stale target or unknown result interrupts the program; do not replay prior effects.']};
   if(mode==='locator')return {schema:{type:'object',properties:{kind:{type:'string',enum:['click','fill','select',...controls]},locator:{type:'object',properties:{strategy:{type:'string',enum:['css','role','label','text']},query:string,role:string,within:string,frame:{type:'integer',enum:[...new Set([...observation.targets.map(t=>t.frame),0])]}},required:['strategy','query','role','within','frame'],additionalProperties:false},value:string,reason:string},required:['kind','locator','value','reason'],additionalProperties:false},choices,
     rules:['Generate a Playwright locator. css uses locator(query); role uses getByRole(role,{name:query,exact:true}); label/text use their exact visible names.',
@@ -47,6 +47,7 @@ export async function normalizeDecision(answer,{mode,observation,executor}) {
       const action=space.choices.get(step.action);if(!action)throw Error('MODEL_DECISION_INVALID');
       return {...action,value:normalizeValue(action.kind,step.value)};
     });
+    if(actions.slice(0,-1).some(action=>action.kind==='click'))throw Error('PROGRAM_REQUIRES_OBSERVATION_AFTER_CLICK');
     return {control:'act',actions,reason:answer.reason};
   }
   if(controls.includes(answer.kind))return {control:answer.kind,actions:[],reason:answer.reason};
@@ -55,24 +56,30 @@ export async function normalizeDecision(answer,{mode,observation,executor}) {
   const spec=answer.locator;
   if(!spec||![spec.query,spec.role,spec.within].every(s=>typeof s==='string'&&s.length<=2048)||!Number.isSafeInteger(spec.frame))throw Error('MODEL_DECISION_INVALID');
   const frame=executor.page.frames()[spec.frame];if(!frame)throw Error('FRAME_CHANGED');
-  let root=frame;
-  if(spec.within)root=frame.locator('tr,article,fieldset,form,[role=row],[role=group]').filter({hasText:spec.within});
   let locator;
   try {
-    if(spec.strategy==='css')locator=root.locator(spec.query);
-    else if(spec.strategy==='role')locator=root.getByRole(spec.role,{name:spec.query,exact:true});
-    else if(spec.strategy==='label')locator=root.getByLabel(spec.query,{exact:true});
-    else if(spec.strategy==='text')locator=root.getByText(spec.query,{exact:true});
+    if(spec.strategy==='css')locator=frame.locator(spec.query);
+    else if(spec.strategy==='role')locator=frame.getByRole(spec.role,{name:spec.query,exact:true});
+    else if(spec.strategy==='label')locator=frame.getByLabel(spec.query,{exact:true});
+    else if(spec.strategy==='text')locator=frame.getByText(spec.query,{exact:true});
     else throw Error('MODEL_DECISION_INVALID');
-    const count=await locator.count();
-    if(count===0) {
-      if(spec.within&&await root.count()===0)throw Error('LOCATOR_SCOPE_TEXT_NOT_FOUND');
-      throw Error('LOCATOR_NOT_FOUND');
-    }
-    if(count!==1)throw Error('TARGET_AMBIGUOUS');
-    const handle=await locator.elementHandle();
-    if(!handle)throw Error('TARGET_STALE');
+    if(await locator.count()>300)throw Error('TARGET_AMBIGUOUS');
+    const handles=await locator.elementHandles();
     try {
+      if(!handles.length)throw Error('LOCATOR_NOT_FOUND');
+      if(handles.length>300)throw Error('TARGET_AMBIGUOUS');
+      const scoped=[];
+      for(const handle of handles) {
+        const matches= !spec.within || await handle.evaluate((element,text)=>{
+          const container=element.closest('tr,[role=row],article,[role=group],fieldset,form');
+          const normalize=value=>(value||'').replace(/\s+/g,' ').trim();
+          return normalize(container?.innerText).includes(normalize(text));
+        },spec.within);
+        if(matches)scoped.push(handle);
+      }
+      if(!scoped.length)throw Error('LOCATOR_SCOPE_TEXT_NOT_FOUND');
+      if(scoped.length!==1)throw Error('TARGET_AMBIGUOUS');
+      const [handle]=scoped;
       // Binding is to nodes from the same observation, not role/name replay.
       for(const target of observation.targets) {
         if(target.frame!==spec.frame||!target.actions.includes(answer.kind))continue;
@@ -81,7 +88,7 @@ export async function normalizeDecision(answer,{mode,observation,executor}) {
           return {control:'act',actions:[{kind:answer.kind,ref:target.ref,value}],reason:answer.reason};
         }
       }
-    }finally{await handle.dispose();}
+    }finally{await Promise.allSettled(handles.map(handle=>handle.dispose()));}
     throw Error('TARGET_UNOBSERVED_OR_STALE');
   }catch(error){
     if(['MODEL_DECISION_INVALID','LOCATOR_NOT_FOUND','LOCATOR_SCOPE_TEXT_NOT_FOUND','TARGET_AMBIGUOUS','TARGET_STALE','TARGET_UNOBSERVED_OR_STALE'].includes(error.message))throw error;

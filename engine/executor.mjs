@@ -94,11 +94,13 @@ export class Journal {
  */
 export class Executor {
   #refScope = randomUUID();
+  #approveAction;
 
-  constructor(page, { journal, grants, timeout = 800, maxTargets = 300, maxTextChars = 16000 } = {}) {
+  constructor(page, { journal, grants, approveAction, timeout = 800, maxTargets = 300, maxTextChars = 16000 } = {}) {
     this.page = page;
     this.journal = new Journal(journal);
     this.grants = structuredClone(grants || []);
+    this.#approveAction = approveAction;
     this.timeout = timeout;
     this.maxTargets = maxTargets;
     this.maxTextChars = maxTextChars;
@@ -200,10 +202,13 @@ export class Executor {
       if (input.kind === 'select' && identity.tag !== 'SELECT') return fail('MODEL_DECISION_INVALID');
       if (file && (identity.tag !== 'INPUT' || identity.type?.toLowerCase() !== 'file' || identity.disabled)) return fail('MODEL_DECISION_INVALID');
       const origin = new URL(entry.frame.url()).origin;
-      const topOrigin = new URL(this.page.url()).origin;
+      const topUrl = this.page.url();
+      const topOrigin = new URL(topUrl).origin;
       if (!this.grants.some(g => g.origin === topOrigin)) return fail('POLICY_DENIED');
       // Even a click may submit a payment. Caller cannot downgrade risk in the intent.
-      if (!this.grants.some(g => g.origin === origin && g.kinds.includes(input.kind) && (g.context === undefined || g.context === identity.context) && (g.name === undefined || g.name === identity.name))) return fail('POLICY_DENIED');
+      const matchingGrants = this.grants.filter(g => g.origin === origin && g.kinds.includes(input.kind)
+        && (g.context === undefined || g.context === identity.context) && (g.name === undefined || g.name === identity.name));
+      if (!matchingGrants.length) return fail('POLICY_DENIED');
       // Block explicit link/form destinations outside trusted host origin grants.
       // This is a navigation preflight, not a network firewall against arbitrary JS.
       const isSubmitter = identity.tag === 'BUTTON' && (!identity.type || identity.type === 'submit') || identity.tag === 'INPUT' && ['submit', 'image'].includes(identity.type);
@@ -216,12 +221,27 @@ export class Executor {
       this.journal.append({ event: 'preflight', operationId: input.operationId, kind: input.kind, targetDigest: hash(identity) });
       const prior = this.journal.prior(input.operationId).filter(r => r.event === 'dispatch_intent');
       if (prior.length) return fail('OPERATION_ALREADY_ATTEMPTED');
+      const approvalScopes = [...new Set(matchingGrants.filter(grant => grant.approval !== undefined).map(grant => grant.approval))];
+      if (approvalScopes.length) {
+        if (approvalScopes.length !== 1 || typeof approvalScopes[0] !== 'string' || !approvalScopes[0]
+          || typeof this.#approveAction !== 'function') return fail('APPROVAL_REQUIRED');
+        const request = { scope: approvalScopes[0], operationId: input.operationId, kind: input.kind, origin,
+          target: { name: identity.name, context: identity.context, destination }, targetDigest: hash(identity),
+          actionDigest: hash({ kind: input.kind, value: input.value, file: file?.buffer }) };
+        let approved = false;
+        try { approved = await this.#approveAction(structuredClone(request)) === true; } catch { /* fail closed */ }
+        this.journal.append({ event: 'approval', operationId: input.operationId, scope: request.scope,
+          targetDigest: request.targetDigest, actionDigest: request.actionDigest, approved });
+        if (!approved) return fail('APPROVAL_DENIED');
+      }
       if (input.kind === 'click') {
         try { await entry.handle.click({ trial: true, timeout: this.timeout }); }
         catch { return fail('TARGET_NOT_ACTIONABLE'); }
       }
       // Trial may wait while a virtualized row silently changes business identity.
       const last = await entry.handle.evaluate(describe).catch(() => null);
+      if (this.page.url() !== topUrl || entry.frame.isDetached() || (this.frameEpochs.get(entry.frame) || 0) !== entry.epoch
+        || entry.frame.url() !== entry.url) return fail('FRAME_CHANGED');
       if (!last || hash(last) !== hash(entry.identity)) return fail('TARGET_STALE');
       this.journal.append({ event: 'dispatch_intent', operationId: input.operationId, kind: input.kind, targetDigest: hash(last), rev: entry.rev,
         ...(file ? { fileSha256: createHash('sha256').update(file.buffer).digest('hex'), fileBytes: file.buffer.length } : {}) });

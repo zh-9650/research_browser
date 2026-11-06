@@ -15,7 +15,7 @@ const visualSchema = { type: 'object', properties: {
  * Goal verification is a separate trusted host callback, never the model's DONE.
  * No automatic provider fallback, uncertain-action replay, selector or script execution.
  */
-export async function runAgent({executor,task,decide,verifyGoal,directory,maxModelCalls=12,maxTokens=300000,mode='legacy-ref',beforeExecute,maxActions=40,maxWallTimeMs=300000,visualGrant,shouldCaptureImage}) {
+export async function runAgent({executor,task,decide,verifyGoal,directory,maxModelCalls=12,maxTokens=300000,mode='legacy-ref',beforeExecute,maxActions=40,maxWallTimeMs=300000,visualGrant,shouldCaptureImage,isFinalAction}) {
   await mkdir(directory,{recursive:true});
   const immutableTask=structuredClone(task), history=[], ledger=[];
   const hybrid = mode === 'hybrid';
@@ -129,6 +129,12 @@ export async function runAgent({executor,task,decide,verifyGoal,directory,maxMod
     if(Date.now()-started>=maxWallTimeMs){terminal='WALL_TIME_BUDGET_EXHAUSTED';break modelLoop;}
     const target=observation.targets.find(t=>t.ref===action.ref);
     if(!target || !target.actions.includes(action.kind)){terminal='MODEL_DECISION_INVALID';break modelLoop;}
+    let finalAction = false;
+    if (isFinalAction) {
+      try {
+        finalAction = await isFinalAction(structuredClone({kind:action.kind,target,url:observation.url})) === true;
+      } catch { terminal = 'FINAL_ACTION_POLICY_FAILED'; break modelLoop; }
+    }
     // Ignore transient observation Ref versions when identifying the same attempted intent.
     // Full context is conservative and imperfect: no claim of business-level exactly-once.
     const operationId=hash({task:immutableTask,url:observation.url,frame:target.frame,kind:action.kind,name:target.name,
@@ -147,6 +153,10 @@ export async function runAgent({executor,task,decide,verifyGoal,directory,maxMod
     if(receipt.error) {
       if(!['TARGET_STALE','FRAME_CHANGED','TARGET_NOT_ACTIONABLE','SESSION_BUSY'].includes(receipt.error)){terminal=receipt.error;break modelLoop;}
       row.interrupted=true;break;
+    }
+    if (finalAction && receipt.dispatch === 'sent') {
+      terminal = 'FINAL_ACTION_AWAITING_VERIFICATION';
+      break modelLoop;
     }
     if(mode!=='legacy-ref'&&action.kind!=='click') {
       execution.readback=await executor.readTarget(action.ref);
@@ -171,7 +181,7 @@ export async function runAgent({executor,task,decide,verifyGoal,directory,maxMod
   }
   const controllerTerminal=terminal;
   if(verified.status==='verified')terminal='GOAL_VERIFIED';
-  else if(modelDone&&verified.status==='failed')terminal='GOAL_FAILED';
+  else if((modelDone||controllerTerminal==='FINAL_ACTION_AWAITING_VERIFICATION')&&verified.status==='failed')terminal='GOAL_FAILED';
   const result={mode,terminal,controllerTerminal,modelDone,taskResult:verified,modelCalls:ledger.length,tokens,actionAttempts,elapsedMs:Date.now()-started,tokenAccountingComplete:ledger.every(r=>Number.isSafeInteger(r.usage?.input_tokens)&&Number.isSafeInteger(r.usage?.output_tokens)),steps:ledger};
   await writeFile(join(directory,'result.json'),JSON.stringify(result,null,2));
   return result;

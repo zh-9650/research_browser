@@ -11,6 +11,23 @@ const answer=kind=>({validRun:true,usage:{input_tokens:1,output_tokens:1},answer
 const fixture=(receipt={dispatch:'sent',error:null})=>({calls:0,async observe(){return structuredClone(observation);},async act(){this.calls++;return receipt;}});
 const directory=()=>mkdtemp(join(tmpdir(),'browser-agent-loop-'));
 
+test('已派发的最终动作立即转独立验真，未知结果时不再请求模型', async () => {
+  for (const [status, terminal] of [['verified','GOAL_VERIFIED'], ['failed','GOAL_FAILED'], ['unknown','FINAL_ACTION_AWAITING_VERIFICATION']]) {
+    const executor=fixture();
+    let decisions=0, verifications=0;
+    const result=await runAgent({executor,task,directory:await directory(),
+      isFinalAction:({target})=>target.name==='提交申请',
+      decide:async()=>{decisions++;return answer('click');},
+      verifyGoal:async()=>{verifications++;return {status,evidence:'backend:terminal-record'};},
+    });
+    assert.equal(result.terminal,terminal);
+    assert.equal(result.controllerTerminal,'FINAL_ACTION_AWAITING_VERIFICATION');
+    assert.equal(decisions,1);
+    assert.equal(verifications,1);
+    assert.equal(executor.calls,1);
+  }
+});
+
 test('按需视觉观察缺失时，即使决策端越过 schema 也拒绝坐标点击', async () => {
   const executor = fixture();
   executor.page = { viewportSize: () => ({width:640,height:360}) };

@@ -2,6 +2,11 @@
 
 ## 任务: 按 V1.0 任务书研究并研发通用浏览器执行器
 ## 已完成
+- 跨站登记支持宿主标记最终提交，实跑登记阶段由 4 调用降至 1，均仅一次正确提交；未知验真分支不会再叫模型。见 reports/cross-site-tabs.md。
+- 两本地 origin 三标签真实模型路由、抽取和登记通过，源站仅 GET，目标一次正确写入，三个标签保留。见 reports/cross-site-tabs.md。
+- S34 增加宿主审批，真实 Chrome 验证无审批/拒绝删除、审批中金额变化阻断支付、批准发送一次。见 reports/sensitive-approval.md。
+- S29 补充真实 Chrome 已写入但未落回执时强制终止控制子进程；残锁拒接管，独立核实后新浏览器拒旧操作并仅执行下一步。见 reports/model-long-recovery.md。
+- S28/S29 真 Chrome 25 箱真实模型逐箱选择，第15箱后导航干扰并重启，从独立后端对账继续；25 请求 25 正确提交，零重复。见 reports/model-long-recovery.md。
 - S17 真实 Chrome 页码和滚动游标混用，四批八条含两项重叠，按业务 ID 去重后六条与独立清单一致。见 reports/pagination-scroll.md。
 - S18 真模型 5 步在 Chrome 保持城市、两项复选、排序四约束，独立后端仅正确登记 SZ-417 一次。见 reports/filter-constraints.md。
 - S20 Chrome DOM 弹窗叠加原生 confirm，宿主拒绝错对象、允许正确对象一次，两组焦点均回到打开按钮。见 reports/dialog-focus.md。
